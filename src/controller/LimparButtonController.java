@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import javax.swing.JTextField;
 
-
 public class LimparButtonController implements ActionListener{
     private ArrayList<JTextField> textFields;
 

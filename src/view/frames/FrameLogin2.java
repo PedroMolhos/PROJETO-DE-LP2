@@ -3,8 +3,6 @@ package view.frames;
 import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -17,7 +15,7 @@ import controller.MouseListenerController;
 import view.buttons.EntrarButton;
 import view.buttons.LimparButton;
 
-public class FrameLogin extends JFrame {
+public class FrameLogin2 extends JFrame {
 
     private final Dimension dimension = new Dimension(500,500);
     private JLabel lblUser;
@@ -29,7 +27,7 @@ public class FrameLogin extends JFrame {
     private LimparButton limparButton;
 
     // Construtor da Tela de Login
-    public FrameLogin(){
+    public FrameLogin2(){
 
         // Definindo propriedades básicas do JFrame de Login
         setTitle("Login de Usuário");
@@ -42,64 +40,55 @@ public class FrameLogin extends JFrame {
         // Inicializando Arraylist de JtextFields
         this.txtFields = new ArrayList<JTextField>();
 
-        addlblUser(this);
-        addlblSenha(this);
-        addtxtUser(this);
-        addtxtSenha(this);
-        addLimparButton(this);
-        addEntrarButton(this);
 
-        setVisible(true);
-    }
-
-    private void addlblUser(JFrame jframe){
+        // Adicionando Label "User"
         lblUser = new JLabel("User");
         lblUser.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblUser.setBounds(100, 40, 100, 30);
-        jframe.add(lblUser);
+        this.add(lblUser);
 
-    }
-    private void addlblSenha(JFrame jframe){
+        // Adicionando Label "Senha"
         lblSenha = new JLabel("Senha");
         lblSenha.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblSenha.setBounds(100, 120, 100, 30);
-        jframe.add(lblSenha);
-    }
+        this.add(lblSenha);
 
-    private void addtxtUser(JFrame jframe){
+        // Adicionado TextField do User
         txtUser = new JTextField();
         txtUser.setPreferredSize(new Dimension(300,70));
         txtUser.setBounds(100, 70, 300, 40);
         txtFields.add(txtUser);
-        jframe.add(txtUser);
-    }
+        this.add(txtUser);
 
-    private void addtxtSenha(JFrame jframe){
+        // Adicionado TextField da Senha
         txtSenha = new JTextField();
         txtSenha.setPreferredSize(new Dimension(300,70));
         txtSenha.setBounds(100, 150, 300, 40);
         txtFields.add(txtSenha);
-        jframe.add(txtSenha);
-    }
+        this.add(txtSenha);
 
-    private void addEntrarButton(JFrame jframe){
-        entrarButton = new EntrarButton(new EntrarButtonController(this,this.txtUser,this.txtSenha));
-        entrarButton.setBounds(95, 240, 310, 45);
+        // Adicionando Botão "Entrar"
+        entrarButton = new EntrarButton(new EntrarButtonController(this, txtUser, txtSenha));
+        entrarButton.setBounds(95, 260, 310, 45);
         entrarButton.setFont(new Font("Tahoma", Font.BOLD, 15));
         entrarButton.setFocusable(false);
         entrarButton.setForeground(Color.white);
         entrarButton.setBackground(new Color(64,154,60));
-        jframe.add(entrarButton);
-    }
+        this.add(entrarButton);
 
-    private void addLimparButton(JFrame jframe){
+        // Adicionando Botão "Limpar"
         limparButton = new LimparButton(new LimparButtonController(txtFields));
-        limparButton.setBounds(100, 190, 300, 30);
+        limparButton.setBounds(100, 195, 300, 30);
         limparButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
         limparButton.setFocusable(false);
         limparButton.setForeground(Color.black);
-        limparButton.setBorderPainted(true);
+        limparButton.setBorderPainted(false);
         limparButton.setContentAreaFilled(false);
-        jframe.add(limparButton);
+        limparButton.addMouseListener(new MouseListenerController(limparButton));
+        this.add(limparButton);
+
+
+        setVisible(true);
     }
+
 }

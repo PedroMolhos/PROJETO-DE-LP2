@@ -3,18 +3,32 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import view.frames.FrameCadastro;
-import view.frames.FrameLogin;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
+
 
 public class EntrarButtonController implements ActionListener{
-    private FrameLogin frameLogin;
+    private JFrame JFrame;
+    private JTextField user;
+    private JTextField senha;
 
-    public EntrarButtonController(FrameLogin frameLogin){
-        this.frameLogin=frameLogin;
+    public EntrarButtonController(JFrame JFrame, JTextField user, JTextField senha){
+        this.JFrame=JFrame;
+        this.user = user;
+        this.senha = senha;
+        
     }
-    public void actionPerformed(ActionEvent e){
-        frameLogin.dispose();
-        //new FrameCadastro();
 
+    public void actionPerformed(ActionEvent e){
+        
+        if(user.getText().equals("user") && senha.getText().equals("2025") ){
+            JFrame.dispose();
+            // TO DO: add FrameCadastro
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Usuário ou Senha incorretos","Erro",2);
+        }
     }
 }
