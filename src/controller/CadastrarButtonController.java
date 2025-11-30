@@ -3,39 +3,44 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
 
-import model.Produto;
-import view.frames.FrameCadastro;
+import view.frames.ProdutoGUI;
 
 public class CadastrarButtonController implements ActionListener{
     
-    private FrameCadastro jFrame;
+    private ProdutoGUI produtoGUI;
 
-    public CadastrarButtonController(FrameCadastro jFrame) {
-        this.jFrame = jFrame;
+    public CadastrarButtonController(ProdutoGUI produtoGUI) {
+        this.produtoGUI = produtoGUI;
     }
 
     public void actionPerformed(ActionEvent e){
-        System.out.println(jFrame.getCodigo().isBlank());
-        System.out.println(jFrame.getNome().isBlank());
-        System.out.println(jFrame.getCategoria().isBlank());
-        System.out.println(Double.parseDouble(jFrame.getPreco()));
+        if(!(produtoGUI.getCodigo().isBlank()) && !(produtoGUI.getNome().isBlank()) &&
+        !(produtoGUI.getCategoria().isBlank()) && !(produtoGUI.getPreco().isBlank())){
+            
+            produtoGUI.getModel().addRow(new Object[]{
+                produtoGUI.getCodigo(),
+                produtoGUI.getNome(),
+                produtoGUI.getCategoria(),
+                produtoGUI.getPreco()
+            });
 
-        /**
-        try {
-            String codigo = view.getCodigo();
-            String nome = view.getNome();
-            String categoria = view.getCategoria();
-            double preco = Double.parseDouble(view.getPreco());
+            produtoGUI.setCodigo("");
+            produtoGUI.setNome("");
+            produtoGUI.clearCategoria();
+            produtoGUI.setPreco("");
 
-            Produto p = new Produto(codigo, nome, categoria, preco);
+            if(!produtoGUI.getJScrollPane().isVisible()){
+                produtoGUI.getJScrollPane().setVisible(true);
+            }
+            
+            JOptionPane.showMessageDialog(null,"DADOS CADASTRADOS COM SUCESSO!","Cadastro Realizado",1);
 
-         
-            System.out.println("Produto salvo:\n" + p);
-
-        } catch (Exception exception) {
-            view.exibirMensagem("Erro ao salvar: Verifique os dados.");
         }
-        */
+        else{
+            JOptionPane.showMessageDialog(null,"Campos obrigatórios não preenchidos", "Cadastro não Realizado",0);
+        }
+        
     }
 }

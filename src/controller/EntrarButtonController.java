@@ -5,26 +5,26 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import view.frames.FrameCadastro;
-import view.frames.FrameLogin;
+import view.frames.ProdutoGUI;
+import view.frames.LoginGUI;
 
 
 
 public class EntrarButtonController implements ActionListener{
-    private FrameLogin frameLogin;
+    private LoginGUI loguinGui;
 
-    public EntrarButtonController(FrameLogin frameLogin){
-        this.frameLogin=frameLogin;
+    public EntrarButtonController(LoginGUI loguinGui){
+        this.loguinGui=loguinGui;
         
     }
 
     public void actionPerformed(ActionEvent e){
         
-        if(frameLogin.getUser().equals("user") && frameLogin.getSenha().equals("2025") ){
-            frameLogin.dispose();
-            new FrameCadastro();
+        if(loguinGui.getUser().equals("user") && loguinGui.getSenha().equals("2025") ){
+            loguinGui.dispose();
+            new ProdutoGUI();
         }
-        else if(frameLogin.getUser().isBlank() || frameLogin.getSenha().isBlank()){
+        else if(loguinGui.getUser().isBlank() || loguinGui.getSenha().isBlank()){
             JOptionPane.showMessageDialog(null,"Campos obrigatórios em branco","Login Inválido",2);
         }
         else{

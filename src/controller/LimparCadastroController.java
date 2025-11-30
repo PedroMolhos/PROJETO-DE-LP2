@@ -3,19 +3,19 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import view.frames.FrameCadastro;
+import view.frames.ProdutoGUI;
 
 public class LimparCadastroController implements ActionListener{
-    private FrameCadastro frameCadastro;
+    private ProdutoGUI produtoGUI;
 
-    public LimparCadastroController(FrameCadastro frameCadastro){
-        this.frameCadastro = frameCadastro;
+    public LimparCadastroController(ProdutoGUI produtoGUI){
+        this.produtoGUI = produtoGUI;
     }
 
     public void actionPerformed(ActionEvent e){
-        frameCadastro.setCodigo("");
-        frameCadastro.setNome("");
-        frameCadastro.clearCategoria();
-        frameCadastro.setPreco("");
+        produtoGUI.setCodigo("");
+        produtoGUI.setNome("");
+        produtoGUI.clearCategoria();
+        produtoGUI.setPreco("");
     }
 }

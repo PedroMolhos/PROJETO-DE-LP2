@@ -19,7 +19,7 @@ import controller.MouseListenerController;
 import view.buttons.EntrarButton;
 import view.buttons.LimparButton;
 
-public class FrameLogin extends JFrame {
+public class LoginGUI extends JFrame {
 
     private final Dimension dimension = new Dimension(500,500);
     private JLabel lblUser;
@@ -39,7 +39,7 @@ public class FrameLogin extends JFrame {
     */
 
     // Construtor da Tela de Login
-    public FrameLogin(){
+    public LoginGUI(){
 
         // Definindo propriedades básicas do JFrame de Login
         setTitle("Login de Usuário");

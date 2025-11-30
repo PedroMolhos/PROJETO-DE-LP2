@@ -4,13 +4,13 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import view.frames.FrameLogin;
+import view.frames.LoginGUI;
 
 
 public class LimparLoginController implements ActionListener{
-    private FrameLogin frameLogin;
+    private LoginGUI frameLogin;
 
-    public LimparLoginController(FrameLogin frameLogin){
+    public LimparLoginController(LoginGUI frameLogin){
         this.frameLogin=  frameLogin;
 
     }

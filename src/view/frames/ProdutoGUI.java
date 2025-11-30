@@ -22,11 +22,12 @@ import controller.EntrarButtonController;
 import controller.LimparCadastroController;
 import controller.LimparLoginController;
 import controller.MouseListenerController;
+import controller.WindowListenerController;
 import view.buttons.CadastrarButton;
 import view.buttons.LimparButton;
 
 
-public class FrameCadastro extends JFrame {
+public class ProdutoGUI extends JFrame {
     private final Dimension dimension = new Dimension(500,600);
     private JTextField txtCodigo;
     private JTextField txtNome;
@@ -34,13 +35,14 @@ public class FrameCadastro extends JFrame {
     private JComboBox<String> cbbCategoria;
     private ImageIcon image;
     private ArrayList<JTextField> txtFields;
+    private DefaultTableModel modelo;
     private JTable tabelacadastro;
     private JScrollPane jScrollPane;
     
     private LimparButton limparButton;
     private CadastrarButton cadastrarButton;
 
-    public FrameCadastro() {
+    public ProdutoGUI() {
         // Definindo propriedades básicas do JFrame de Login
         setTitle("Cadastro de Produto");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -124,12 +126,15 @@ public class FrameCadastro extends JFrame {
         cadastrarButton.setBackground(new Color(64,154,60));
         add(cadastrarButton);
         
+
+        // Criando Tabela Cadastro e Adicionando JScrollPane
         definirTabelaCadastro();
         jScrollPane = new JScrollPane(tabelacadastro);
         jScrollPane.setBounds(80, 390, 340, 150);
-        jScrollPane.setVisible(true);
+        jScrollPane.setVisible(false);
         add(jScrollPane);
-
+        
+        addWindowListener(new WindowListenerController(this));
         setVisible(true);
     }
 
@@ -169,8 +174,16 @@ public class FrameCadastro extends JFrame {
         JOptionPane.showMessageDialog(this, msg);
     }
 
+    public DefaultTableModel getModel(){
+        return modelo;
+    }
+
+    public JScrollPane getJScrollPane(){
+        return jScrollPane;
+    }
+
     public void definirTabelaCadastro(){
-        DefaultTableModel modelo = new DefaultTableModel();
+        modelo = new DefaultTableModel();
         modelo.addColumn("Código");
         modelo.addColumn("Nome");
         modelo.addColumn("Categoria");
