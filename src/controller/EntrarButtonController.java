@@ -3,32 +3,32 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+
+import view.frames.FrameCadastro;
+import view.frames.FrameLogin;
 
 
 
 public class EntrarButtonController implements ActionListener{
-    private JFrame JFrame;
-    private JTextField user;
-    private JTextField senha;
+    private FrameLogin frameLogin;
 
-    public EntrarButtonController(JFrame JFrame, JTextField user, JTextField senha){
-        this.JFrame=JFrame;
-        this.user = user;
-        this.senha = senha;
+    public EntrarButtonController(FrameLogin frameLogin){
+        this.frameLogin=frameLogin;
         
     }
 
     public void actionPerformed(ActionEvent e){
         
-        if(user.getText().equals("user") && senha.getText().equals("2025") ){
-            JFrame.dispose();
-            // TO DO: add FrameCadastro
+        if(frameLogin.getUser().equals("user") && frameLogin.getSenha().equals("2025") ){
+            frameLogin.dispose();
+            new FrameCadastro();
+        }
+        else if(frameLogin.getUser().isBlank() || frameLogin.getSenha().isBlank()){
+            JOptionPane.showMessageDialog(null,"Campos obrigatórios em branco","Login Inválido",2);
         }
         else{
-            JOptionPane.showMessageDialog(null,"Usuário ou Senha incorretos","Erro",2);
+            JOptionPane.showMessageDialog(null,"Usuário ou senha incorretos","Login Inválido",2);
         }
     }
 }

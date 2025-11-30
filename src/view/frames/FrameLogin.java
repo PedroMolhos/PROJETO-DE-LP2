@@ -3,16 +3,18 @@ package view.frames;
 import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import controller.EntrarButtonController;
-import controller.LimparButtonController;
+import controller.LimparLoginController;
 import controller.MouseListenerController;
 import view.buttons.EntrarButton;
 import view.buttons.LimparButton;
@@ -27,6 +29,14 @@ public class FrameLogin extends JFrame {
     private ArrayList<JTextField> txtFields; 
     private EntrarButton entrarButton;
     private LimparButton limparButton;
+    private ImageIcon image;
+
+
+    /*                                     TESTE:
+    private JTable tabela;
+    private JScrollPane jScrollPane;
+    private DefaultTableModel modelo;
+    */
 
     // Construtor da Tela de Login
     public FrameLogin(){
@@ -39,67 +49,98 @@ public class FrameLogin extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
 
+        image = new ImageIcon("src\\mercado.png");
+        setIconImage(image.getImage());
+
         // Inicializando Arraylist de JtextFields
         this.txtFields = new ArrayList<JTextField>();
 
-        addlblUser(this);
-        addlblSenha(this);
-        addtxtUser(this);
-        addtxtSenha(this);
-        addLimparButton(this);
-        addEntrarButton(this);
 
-        setVisible(true);
-    }
-
-    private void addlblUser(JFrame jframe){
+        // Adicionando Label "User"
         lblUser = new JLabel("User");
         lblUser.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblUser.setBounds(100, 40, 100, 30);
-        jframe.add(lblUser);
+        this.add(lblUser);
 
-    }
-    private void addlblSenha(JFrame jframe){
+        // Adicionando Label "Senha"
         lblSenha = new JLabel("Senha");
         lblSenha.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblSenha.setBounds(100, 120, 100, 30);
-        jframe.add(lblSenha);
-    }
+        this.add(lblSenha);
 
-    private void addtxtUser(JFrame jframe){
+        // Adicionado TextField do User
         txtUser = new JTextField();
-        txtUser.setPreferredSize(new Dimension(300,70));
+        //txtUser.setPreferredSize(new Dimension(300,70));
         txtUser.setBounds(100, 70, 300, 40);
         txtFields.add(txtUser);
-        jframe.add(txtUser);
-    }
+        this.add(txtUser);
 
-    private void addtxtSenha(JFrame jframe){
+        // Adicionado TextField da Senha
         txtSenha = new JTextField();
-        txtSenha.setPreferredSize(new Dimension(300,70));
+        //txtSenha.setPreferredSize(new Dimension(300,70));
         txtSenha.setBounds(100, 150, 300, 40);
         txtFields.add(txtSenha);
-        jframe.add(txtSenha);
-    }
+        this.add(txtSenha);
 
-    private void addEntrarButton(JFrame jframe){
-        entrarButton = new EntrarButton(new EntrarButtonController(this,this.txtUser,this.txtSenha));
-        entrarButton.setBounds(95, 240, 310, 45);
+        // Adicionando Botão "Limpar"
+        limparButton = new LimparButton(new LimparLoginController(this));
+        limparButton.setBounds(100, 195, 300, 30);
+        limparButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        limparButton.setFocusable(false);
+        limparButton.setForeground(Color.black);
+        limparButton.setBorderPainted(false);
+        limparButton.setContentAreaFilled(false);
+        limparButton.addMouseListener(new MouseListenerController(limparButton));
+        this.add(limparButton);
+
+        // Adicionando Botão "Entrar"
+        entrarButton = new EntrarButton(new EntrarButtonController(this));
+        entrarButton.setBounds(95, 260, 310, 45);
         entrarButton.setFont(new Font("Tahoma", Font.BOLD, 15));
         entrarButton.setFocusable(false);
         entrarButton.setForeground(Color.white);
         entrarButton.setBackground(new Color(64,154,60));
-        jframe.add(entrarButton);
+        this.add(entrarButton);
+
+        /**                                      TESTE:
+
+        modelo = new DefaultTableModel();
+        modelo.addColumn("Código");
+        modelo.addColumn("Nome");
+        modelo.addColumn("Categoria");
+        modelo.addColumn("Preço");
+        String[] colunas = {"Código", "Nome", "Categoria","Preço"};
+        Object[][] data = {
+            {"1","a","a","a"},
+            {"1","a","a","a"},
+            {"1","a","a","a"},
+            {"1","a","a","a"},
+            {"1","a","a","a"},
+        };  
+        
+        tabela = new JTable(data,colunas);
+        jScrollPane = new JScrollPane(tabela);
+        jScrollPane.setBounds(50,320,400,100);
+        jScrollPane.setVisible(true);
+        this.add(jScrollPane);
+        */
+
+        setVisible(true);
     }
 
-    private void addLimparButton(JFrame jframe){
-        limparButton = new LimparButton(new LimparButtonController(txtFields));
-        limparButton.setBounds(100, 190, 300, 30);
-        limparButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        limparButton.setFocusable(false);
-        limparButton.setForeground(Color.black);
-        limparButton.setBorderPainted(true);
-        limparButton.setContentAreaFilled(false);
-        jframe.add(limparButton);
-    }
+public String getUser(){
+    return txtUser.getText();
+}
+
+public void setUser(String str){
+    txtUser.setText(str);
+}
+
+public String getSenha(){
+    return txtSenha.getText();
+}
+
+public void setSenha(String str){
+    txtSenha.setText(str);
+}
 }

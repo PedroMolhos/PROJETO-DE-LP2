@@ -1,12 +1,12 @@
 package view.buttons;
 
-import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
 public class CadastrarButton extends JButton{
 
-    public CadastrarButton(ActionEvent actionlistener){
+    public CadastrarButton(ActionListener actionlistener){
         this.setText("Cadastrar");
         this.addActionListener(actionListener);
     }
