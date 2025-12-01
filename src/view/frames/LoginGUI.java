@@ -17,6 +17,10 @@ import controller.MouseListenerController;
 import view.buttons.EntrarButton;
 import view.buttons.LimparButton;
 
+/**
+ * Classe responsável pelo JFrame de Login.
+ * @author João Pedro
+ */
 public class LoginGUI extends JFrame {
 
     private final Dimension dimension = new Dimension(500,500);
@@ -29,7 +33,9 @@ public class LoginGUI extends JFrame {
     private LimparButton limparButton;
     private ImageIcon image;
 
-    // Construtor da Tela de Login
+    /**
+     * Construtor vazio do JFrame de Login.
+     */
     public LoginGUI(){
 
         // Definindo propriedades básicas do JFrame de Login
@@ -95,20 +101,36 @@ public class LoginGUI extends JFrame {
 
         setVisible(true);
     }
+    
+    /**
+     * Método para obter a String presente no JTextField txtUser.
+     * @return String
+     */
+    public String getUser(){
+        return txtUser.getText();
+    }
 
-public String getUser(){
-    return txtUser.getText();
-}
+    /**
+     * Método para definir a String do JTextField txtUser.
+     * @param str Usuário para login. 
+     */
+    public void setUser(String str){
+        txtUser.setText(str);
+    }
 
-public void setUser(String str){
-    txtUser.setText(str);
-}
+    /**
+     * Método para obter a String presente no JTextField txtSenha.
+     * @return String
+     */
+    public String getSenha(){
+        return txtSenha.getText();
+    }
 
-public String getSenha(){
-    return txtSenha.getText();
-}
-
-public void setSenha(String str){
-    txtSenha.setText(str);
-}
+    /**
+     * Método para definir a String do JTextField txtSenha.
+     * @param str Senha do usuário. 
+     */
+    public void setSenha(String str){
+        txtSenha.setText(str);
+    }
 }

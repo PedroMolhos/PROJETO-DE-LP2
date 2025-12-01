@@ -15,15 +15,16 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import controller.CadastrarButtonController;
-import controller.EntrarButtonController;
 import controller.LimparCadastroController;
-import controller.LimparLoginController;
 import controller.MouseListenerController;
 import controller.WindowListenerController;
 import view.buttons.CadastrarButton;
 import view.buttons.LimparButton;
 
-
+/**
+ * Classe responsável pelo JFrame de Cadastro de Produtos.
+ * @author João Pedro
+ */
 public class ProdutoGUI extends JFrame {
     private final Dimension dimension = new Dimension(500,600);
     private JTextField txtCodigo;
@@ -38,6 +39,9 @@ public class ProdutoGUI extends JFrame {
     private LimparButton limparButton;
     private CadastrarButton cadastrarButton;
 
+    /**
+     * Construtor vazio do JFrame de Cadastro de Produtos.
+     */
     public ProdutoGUI() {
         // Definindo propriedades básicas do JFrame de Login
         setTitle("Cadastro de Produto");
@@ -54,8 +58,6 @@ public class ProdutoGUI extends JFrame {
         // Adicionando Label "Código"
         JLabel lblCodigo = new JLabel("Código:");
         lblCodigo.setFont(new Font("Tahoma", Font.BOLD, 14));
-        //lblCodigo.setBackground(Color.BLUE);lblCodigo.setOpaque(true);
-        //lblCodigo.setHorizontalAlignment(JLabel.CENTER);lblCodigo.setVerticalAlignment(JLabel.CENTER);
         lblCodigo.setBounds(100, 20, 100, 30);
         add(lblCodigo);
 
@@ -80,8 +82,6 @@ public class ProdutoGUI extends JFrame {
         JLabel lblPreco = new JLabel("Preço Unitário:");
         lblPreco.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblPreco.setBounds(100, 150, 110, 30);
-        //lblPreco.setBackground(Color.BLACK);
-        //lblPreco.setOpaque(true);
         add(lblPreco);
 
         // Adicionando TextField do Preço
@@ -133,34 +133,65 @@ public class ProdutoGUI extends JFrame {
         setVisible(true);
     }
 
-
+    /**
+     * Método para obter a String presente no JTextField txtCodigo.
+     * @return String
+     */
     public String getCodigo() {
         return txtCodigo.getText();
     }
 
+    /**
+     * Método para definir a String do JTextField txtCodigo.
+     * @param str Código do produto. 
+     */
     public void setCodigo(String str) {
         txtCodigo.setText(str);
     }
 
+    /**
+     * Método para obter a String presente no JTextField txtNome.
+     * @return String
+     */
     public String getNome() {
         return txtNome.getText();
     }
 
+    /**
+     * Método para definir a String do JTextField txtNome.
+     * @param str Nome do Produto. 
+     */
     public void setNome(String str) {
         txtNome.setText(str);
     }
 
+    /**
+     * Método para obter o Item presente no JComboBox cbbCategoria.
+     * @return Categoria ecolhida
+     */
     public String getCategoria() {
         return cbbCategoria.getSelectedItem().toString();
     }
+
+    /**
+     * Método para limpar o JComboBox cbbCategoria. Define seu índice como 0. 
+     */
     public void clearCategoria() {
         cbbCategoria.setSelectedIndex(0);
     }
 
+    /**
+     * Método para obter a String presente no JTextField txtPreco.
+     * @return String
+     */
     public String getPreco() {
         return txtPreco.getText();
     }
 
+    /**
+     * Método para definir a String do JTextField txtPreco.
+     * @param str Preço do produto. 
+     */
     public void setPreco(String str) {
         txtPreco.setText(str);
     }
@@ -169,14 +200,25 @@ public class ProdutoGUI extends JFrame {
         JOptionPane.showMessageDialog(this, msg);
     }
 
+    /**
+     * Método para obter o DefaultTableModel da JTable de Cadastro de Produtos.
+     * @return modelo
+     */
     public DefaultTableModel getModel(){
         return modelo;
     }
 
+    /**
+     * Método para obter o JScrollPane da JTable de Cadastro de Produtos.
+     * @return jScrollPane
+     */
     public JScrollPane getJScrollPane(){
         return jScrollPane;
     }
 
+    /**
+     * Método construtor vazio da JTable de Cadastro de Produtos.
+     */
     public void definirTabelaCadastro(){
         modelo = new DefaultTableModel();
         modelo.addColumn("Código");

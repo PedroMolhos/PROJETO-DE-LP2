@@ -8,14 +8,25 @@ import javax.swing.JOptionPane;
 
 import view.frames.ProdutoGUI;
 
-
+/**
+ * Classe que implementa a clsse WindownListener responsável pelo fechamento da tela de cadastro de produtos.
+ * @author João Pedro
+ */
 public class WindowListenerController implements WindowListener{
     private ProdutoGUI produtoGUI;
 
+    /**
+     * Construtor do WindowListenerController.
+     * @param produtoGUI Tela de Cadastro
+     */
     public WindowListenerController(ProdutoGUI produtoGUI){
         this.produtoGUI = produtoGUI;
     }
 
+    /**
+     * Método implementado da interface WindowListener que define seu comportameno ao fechamento.
+     * @param e WindowEvent
+     */
     @Override
     public void windowClosing(WindowEvent e) {
         
@@ -25,7 +36,7 @@ public class WindowListenerController implements WindowListener{
         if (result == JOptionPane.YES_OPTION) {
 
             // Escrevendo Lista de Produtos e Fechando ProdutoGUI
-            ManusearArquivo.salvar();
+            ArquivoCadastro.salvar();
             produtoGUI.dispose();
         }
         if (result == JOptionPane.NO_OPTION){
@@ -33,36 +44,45 @@ public class WindowListenerController implements WindowListener{
         }
     }
 
+    /**
+     * Método não implementado.
+     * @param e WindowEvent.
+     */
     @Override
-    public void windowClosed(WindowEvent e) {
+    public void windowClosed(WindowEvent e) {}
 
-    }
-
+    /**
+     * Método não implementado.
+     * @param e WindowEvent.
+     */
     @Override
-    public void windowIconified(WindowEvent e) {
+    public void windowIconified(WindowEvent e) {}
 
-    }
-
+    /**
+     * Método não implementado.
+     * @param e WindowEvent.
+     */
     @Override
-    public void windowDeiconified(WindowEvent e) {
+    public void windowDeiconified(WindowEvent e) {}
 
-    }
-
+    /**
+     * Método não implementado.
+     * @param e WindowEvent.
+     */
     @Override
-    public void windowActivated(WindowEvent e) {
+    public void windowActivated(WindowEvent e) {}
 
-    }
-
+    /**
+     * Método não implementado.
+     * @param e WindowEvent.
+     */
     @Override
-    public void windowDeactivated(WindowEvent e) {
-;
-    }
+    public void windowDeactivated(WindowEvent e) {}
 
+    /**
+     * Método não implementado.
+     * @param e WindowEvent.
+     */
     @Override
-    public void windowOpened(WindowEvent e) {
-    	
-
-   
-          
-        }
+    public void windowOpened(WindowEvent e) {}
 }

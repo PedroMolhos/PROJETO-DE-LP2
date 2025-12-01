@@ -3,6 +3,10 @@ package controller;
 import javax.swing.JOptionPane;
 import model.Produto;
 
+/**
+ * Classe responsável por validar os dados de cadastro de produto.
+ * @author João Pedro
+ */
 public class ValidarCadastro {
 
 	public static long codigo;
@@ -10,9 +14,15 @@ public class ValidarCadastro {
     public static String categoria;
     public static double preco;
     
-	//valida um produto a ser cadastrado. 
-	// Retorna falso se algo nao foi inserido ou se foi inserido corretamente, 
-	// e true se esta tudo correto. 
+	
+    /**
+     * Método que valida um produto a ser cadastrado. Retorna falso se algo nao foi inserido 
+	 * ou se foi inserido incorretamente, e true se esta tudo correto. 
+     * @param Ccodigo codigo que identifica o produto.
+     * @param Cnome nome do produto.
+     * @param Ccategoria categoria do produto.
+     * @param Cpreco preço do produto.
+     */
     public static boolean validar (String Ccodigo, String Cnome, String Ccategoria, String Cpreco) {
 
     	//Verifica se as strings estão vazias 

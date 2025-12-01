@@ -8,15 +8,26 @@ import javax.swing.JOptionPane;
 
 import view.frames.ProdutoGUI;
 
-
+/**
+ * Classe responsável por controlar a ação do botão de cadastro.
+ * @author João Pedro
+ */
 public class CadastrarButtonController implements ActionListener{
     
     private ProdutoGUI produtoGUI;
- ;
+
+    /**
+     * Construtor do CadastrarButtonController.
+     * @param produtoGUI Tela de Cadastro
+     */
     public CadastrarButtonController(ProdutoGUI produtoGUI) {
         this.produtoGUI = produtoGUI;
     }
 
+    /**
+     * Método implementado da interface ActionListener que define o comportamento do botão.
+     * @param e ActionEvent
+     */
     public void actionPerformed(ActionEvent e){
         
         if(!(ValidarCadastro.validar(produtoGUI.getCodigo(),produtoGUI.getNome(),produtoGUI.getCategoria(),produtoGUI.getPreco()))){

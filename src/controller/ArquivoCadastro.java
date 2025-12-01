@@ -10,8 +10,15 @@ import java.util.ArrayList;
 
 import model.Produto;
 
-public class ManusearArquivo {
+/**
+ * Classe responsável por gravar e ler a lista de produtos em um arquivo.
+ * @author João Pedro
+ */
+public class ArquivoCadastro {
 	
+	/**
+     * Método vazio responsável por escrever e ler a lista de produtos em um arquivo.
+     */
 	public static void salvar() {
 
 		// Escrevendo Lista de Produtos
