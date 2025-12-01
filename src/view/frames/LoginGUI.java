@@ -8,10 +8,8 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
+
 
 import controller.EntrarButtonController;
 import controller.LimparLoginController;
@@ -30,13 +28,6 @@ public class LoginGUI extends JFrame {
     private EntrarButton entrarButton;
     private LimparButton limparButton;
     private ImageIcon image;
-
-
-    /*                                     TESTE:
-    private JTable tabela;
-    private JScrollPane jScrollPane;
-    private DefaultTableModel modelo;
-    */
 
     // Construtor da Tela de Login
     public LoginGUI(){
@@ -101,29 +92,6 @@ public class LoginGUI extends JFrame {
         entrarButton.setForeground(Color.white);
         entrarButton.setBackground(new Color(64,154,60));
         this.add(entrarButton);
-
-        /**                                      TESTE:
-
-        modelo = new DefaultTableModel();
-        modelo.addColumn("Código");
-        modelo.addColumn("Nome");
-        modelo.addColumn("Categoria");
-        modelo.addColumn("Preço");
-        String[] colunas = {"Código", "Nome", "Categoria","Preço"};
-        Object[][] data = {
-            {"1","a","a","a"},
-            {"1","a","a","a"},
-            {"1","a","a","a"},
-            {"1","a","a","a"},
-            {"1","a","a","a"},
-        };  
-        
-        tabela = new JTable(data,colunas);
-        jScrollPane = new JScrollPane(tabela);
-        jScrollPane.setBounds(50,320,400,100);
-        jScrollPane.setVisible(true);
-        this.add(jScrollPane);
-        */
 
         setVisible(true);
     }

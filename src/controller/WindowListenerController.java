@@ -1,21 +1,13 @@
 package controller;
 
-
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.EOFException;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import model.Produto;
 import view.frames.ProdutoGUI;
+
 
 public class WindowListenerController implements WindowListener{
     private ProdutoGUI produtoGUI;
@@ -26,39 +18,15 @@ public class WindowListenerController implements WindowListener{
 
     @Override
     public void windowClosing(WindowEvent e) {
-        int result = JOptionPane.showConfirmDialog(
-                        produtoGUI,
-                        "Deseja mesmo sair?",
-                        "Confirmar saída",
-                        JOptionPane.YES_NO_OPTION);
+        
+        String[] opcoes = {"Sim","Não"};
+        int result = JOptionPane.showOptionDialog(produtoGUI, "Deseja mesmo sair?", "Confirmar saída", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[0]);
 
         if (result == JOptionPane.YES_OPTION) {
-            Vector<Vector> dados = produtoGUI.getModel().getDataVector();
 
-            try{
-                FileOutputStream file = new FileOutputStream("src\\saida.dat");
-                ObjectOutputStream saida = new ObjectOutputStream(file);
-                saida.writeObject(dados);
-
-                saida.close();
-            } catch (IOException exeption) {
-                exeption.printStackTrace();
-            }
+            // Escrevendo Lista de Produtos e Fechando ProdutoGUI
+            ManusearArquivo.salvar();
             produtoGUI.dispose();
-            try{
-                FileInputStream entrada = new FileInputStream("src\\saida.dat");
-                ObjectInputStream leitura = new ObjectInputStream(entrada);
-                Vector<Vector> output = (Vector<Vector>) leitura.readObject();
-                System.out.println(output);
-                leitura.close();
-                entrada.close();
-            }
-            catch(EOFException exception) {
-                System.out.println("Fim do arquivo alcançado.");
-            }
-            catch (IOException | ClassNotFoundException exception) {
-                exception.printStackTrace();
-            }
         }
         if (result == JOptionPane.NO_OPTION){
             produtoGUI.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -92,5 +60,9 @@ public class WindowListenerController implements WindowListener{
 
     @Override
     public void windowOpened(WindowEvent e) {
-    }
+    	
+
+   
+          
+        }
 }

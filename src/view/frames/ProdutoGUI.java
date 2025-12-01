@@ -1,13 +1,10 @@
 package view.frames;
 
 import java.awt.Color;
-import java.awt.ContainerOrderFocusTraversalPolicy;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -34,7 +31,6 @@ public class ProdutoGUI extends JFrame {
     private JTextField txtPreco;
     private JComboBox<String> cbbCategoria;
     private ImageIcon image;
-    private ArrayList<JTextField> txtFields;
     private DefaultTableModel modelo;
     private JTable tabelacadastro;
     private JScrollPane jScrollPane;
@@ -126,7 +122,6 @@ public class ProdutoGUI extends JFrame {
         cadastrarButton.setBackground(new Color(64,154,60));
         add(cadastrarButton);
         
-
         // Criando Tabela Cadastro e Adicionando JScrollPane
         definirTabelaCadastro();
         jScrollPane = new JScrollPane(tabelacadastro);
